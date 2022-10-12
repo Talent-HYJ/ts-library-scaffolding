@@ -1,6 +1,6 @@
 {
   "name": "ts-library-scaffolding",
-  "version": "1.13.4",
+  "version": "1.0.0",
   "description": "ts-library-scaffolding",
   "main": "lib/index.js",
   "module": "es/index.js",
