@@ -16,6 +16,11 @@ module.exports = {
   stats: 'minimal',
   mode: env === 'development' ? 'development' : 'production',
   devtool: 'eval-cheap-module-source-map',
+  devServer: {
+    hot:true,
+    compress: true,
+    port: 3000,
+  },
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     mainFields: ['jsnext:main', 'module', 'browser', 'main'],
