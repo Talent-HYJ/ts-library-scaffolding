@@ -1,27 +1,55 @@
-import typescript from "rollup-plugin-typescript";
-import sourceMaps from "rollup-plugin-sourcemaps";
-export default {
-  input: "./src/index.ts",
+const typescript = require('@rollup/plugin-typescript')
+const sourceMaps = require('rollup-plugin-sourcemaps')
+const commonjs = require('@rollup/plugin-commonjs')
+const resolve = require('@rollup/plugin-node-resolve')
+const autoExternal = require('rollup-plugin-auto-external')
+const { terser } = require('rollup-plugin-terser')
+const path = require('path')
+
+module.exports = {
+  input: './src/index.ts',
   output: [
     {
-      format: "cjs",
-      file: "dist/lib/bundle.cjs.js"
+      format: 'cjs',
+      dir: path.dirname(`lib/index.cjs.js`),
+      preserveModules: true,
+      preserveModulesRoot: 'src',
     },
     {
-      format: "es",
-      file: "dist/es/bundle.esm.js"
+      format: 'cjs',
+      file: 'lib/index.cjs.min.js',
+      plugins:[terser()]
     },
     {
-      format: "umd",
-      file: "dist/umd/bundle.umd.js",
-      name: "bundle.umd",
-    }
+      format: 'es',
+      dir: path.dirname('es/index.esm.js'),
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+    },
+    {
+      format: 'es',
+      file: 'es/index.esm.min.js',
+      plugins:[terser()]
+    },
+    {
+      format: 'umd',
+      name: 'bundle.umd',
+      file: 'umd/index.umd.js',
+      inlineDynamicImports: true,
+    },
+    {
+      format: 'umd',
+      name: 'bundle.umd',
+      file: `umd/index.umd.min.js`,
+      inlineDynamicImports: true,
+      plugins:[terser()]
+    },
   ],
   plugins: [
-    typescript({
-      exclude: "node_modules/**",
-      typescript: require("typescript")
-    }),
-    sourceMaps()
-  ]
-};
+    autoExternal(),
+    commonjs({ extensions: ['.js', '.ts'] }),
+    resolve(),
+    typescript(),
+    sourceMaps(),
+  ],
+}
