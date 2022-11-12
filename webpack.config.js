@@ -17,7 +17,7 @@ module.exports = {
   mode: env === 'development' ? 'development' : 'production',
   devtool: 'eval-cheap-module-source-map',
   devServer: {
-    hot:true,
+    hot: true,
     compress: true,
     port: 3000,
   },
@@ -42,18 +42,7 @@ module.exports = {
             cacheCompression: false,
             sourceMaps: true,
             inputSourceMap: true,
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  useBuiltIns: 'usage',
-                  corejs: {
-                    version: 2,
-                  },
-                },
-              ],
-              ['@babel/preset-typescript'],
-            ],
+            presets: [['@babel/preset-env'], ['@babel/preset-typescript']],
           },
         },
       },
@@ -69,9 +58,10 @@ module.exports = {
       cleanOnceBeforeBuildPatterns: ['./build'],
       dangerouslyAllowCleanPatternsOutsideProject: true,
     }),
-   env==='development'&& new HtmlWebpackPlugin({
-      template:'./server/template.html'
-    }),
+    env === 'development' &&
+      new HtmlWebpackPlugin({
+        template: './server/template.html',
+      }),
     new FriendlyErrorsWebpackPlugin(),
   ].filter(Boolean),
 }
