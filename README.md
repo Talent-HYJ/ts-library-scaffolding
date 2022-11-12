@@ -6,15 +6,16 @@
 ```
 ### Install
 ```bash
-npm i my-ts-library --dev
-# or
-yarn add my-ts-library --dev
+git clone https://gitee.com/Talent-HYJ/ts-library-scaffolding.git
 ```
  ### Quick Start
   ```bash
-  hello world
+  pnpm run server
   ```
-
+ ### Build
+ ```bash
+  pnpm run build
+  ```
 
 
 
