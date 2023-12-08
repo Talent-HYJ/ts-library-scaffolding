@@ -8,7 +8,7 @@
   "scripts": {
     "server": "cross-env NODE_ENV=development webpack server --config webpack.config.js --open",
     "build": "rollup -c",
-    "release": "cross-env GITHUB_TOKEN=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 release-it --",
+    "release": "dotenv release-it --",
     "test": "jest",
     "prepare": "husky install"
   },
@@ -52,6 +52,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.20.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
