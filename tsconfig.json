@@ -13,6 +13,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
+    "declarationDir": "./dist",
+    "declaration": true,
     "noEmit": true,
   },
   "include": ["src/**/*"],
