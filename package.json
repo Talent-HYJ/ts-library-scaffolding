@@ -8,7 +8,7 @@
   "scripts": {
     "server": "cross-env NODE_ENV=development webpack server --config webpack.config.js --open",
     "build": "rollup -c",
-    "release": "dotenv release-it --",
+    "release": "release-it --",
     "test": "jest",
     "prepare": "husky install"
   },
