@@ -5,6 +5,7 @@
   },
   "git": {
     "requireBranch": "dev",
+    "requireCleanWorkingDir": false,
     "commitMessage": "release: v${version}"
   },
   "npm": {
